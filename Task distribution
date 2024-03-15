@@ -1,0 +1,46 @@
+Name                      ID                  
+Tahura Tabassum         20188991    
+
+Use Case:-
+UC1:Create Account
+This use case allows users to create a new account in the system. Users will be required to provide their personal information to the system. Once the information is validated, users can create a unique username and password to access their account.
+UC2:Sign-in
+This use case permits users to access their accounts by providing their username and password. The system will then authenticate  the credentials to verify that the user is authorized to access the  account.
+UC3:Forgot password
+This use case allows password recovery for users who have  forgotten their passwords. The user must provide their registered email address or phone number, and the system will send them  a link or code to reset their password.
+UC4:Change Password
+This use case provides the functionality of changing account’s password. Users will provide their current password, then enter and confirm their new password. After validation, the system will update the user's account with the new password.
+UC5:Forgot Username/Email
+In case a user forgets their username or email, they can retrieve it by providing their registered phone number or email address. The system will send a message containing their username or email.
+
+Name                ID
+
+
+Use Case:-
+UC6:Transfer Money
+This use case allows users to transfer funds between their account and another user's account by providing the recipient's account IBAN or phone number, transfer amount, and 
+transaction description. The system authenticates the transaction and processes it accordingly.
+UC7:Show Account Balance
+To view their current account balance, users authenticate themselves by entering their password. The system then displays the account balance.
+UC8:Deposit money
+Users specify the deposit amount, and the system generates a virtual account number for transferring funds. After transaction verification, the deposited amount is added to the user's account balance.
+UC9:Withdraw Money
+Users can withdraw money from their bank account by specifying the withdrawal amount and ATM location. After account authentication, the system deducts the withdrawal amount from the user's balance and dispenses cash from the chosen ATM.
+UC10: Enter PIN
+This use case compels the user to enter their PIN number to authenticate their access to specific bank management system features such as money transfers, withdrawals, and password changes.
+
+
+Name                ID
+
+
+Use Cases:
+UC11:Personal loan request
+Users can request a personal loan directly through the bank management system by specifying the amount, and the preferred repayment period. Bank employees evaluate eligibility and authorize requests.
+UC12:Debit/Credit card request
+This use case allows users to request a new debit or credit card through the bank management system. Users specify the type of card, card limit, and other relevant details; The bank employee will process the request and generate the new card. The user will be notified about the availability of the new card and how to retrieve it.
+UC17: Contact Support
+This use case enables users to contact the bank through the management system for assistance or inquiries. The user can choose the type of inquiry or issue they are experiencing, and the system will connect them with a bank employee who can provide help.
+UC18:Bank Offers
+The bank system displays various offers and promotions to users, which may include discounts, rewards, or incentives for using the bank's products or services. Users can choose to interact with or ignore these offers.
+
+                      
