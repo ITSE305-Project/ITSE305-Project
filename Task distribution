@@ -13,8 +13,8 @@ This use case provides the functionality of changing account’s password. Users
 UC5:Forgot Username/Email
 In case a user forgets their username or email, they can retrieve it by providing their registered phone number or email address. The system will send a message containing their username or email.
 
-Name                ID
-
+Name                    ID
+Shakeel Mohammad      202009190
 
 Use Case:-
 UC6:Transfer Money
