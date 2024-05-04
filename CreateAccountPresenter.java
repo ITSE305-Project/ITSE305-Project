@@ -14,17 +14,20 @@ public class CreateAccountPresenter {
         this.createAccountBusiness = createAccountBusiness;
     }
 
+   
+
     /**
      * Displays a prompt to the user to enter their personal information and creates a new account.
+     * @return 
      */
-    public void createAccount() {
+    public String createAccount() {
         // Prompt the user to enter their personal information
         System.out.println("Enter your personal information:");
-        System.out.print("Name: ");
+        System.out.print("Name:Tahura Tabassum ");
         String name = System.console().readLine();
-        System.out.print("Email: ");
+        System.out.print("Email: tahura@example.com ");
         String email = System.console().readLine();
-        System.out.print("Phone number: ");
+        System.out.print("Phone number:123-456-7890S ");
         String phoneNumber = System.console().readLine();
 
         // Create a new account with the user's personal information
@@ -34,5 +37,7 @@ public class CreateAccountPresenter {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+        return phoneNumber;
+        
     }
 }
