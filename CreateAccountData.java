@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 /**
-* The CreateAccountData class is responsible for storing and retrieving data from a data source.
+* The CreateAccountData class is responsible for storing and retrieving data from an in-memory data source.
 */
 public class CreateAccountData {
-   // The data source object (e.g. a database or file)
-   private DataSource dataSource;
+   // The in-memory data source
+   private List<Account> accounts = new ArrayList<>();
 
    /**
     * Creates a new account with the given personal information.
@@ -25,9 +29,19 @@ public class CreateAccountData {
            throw new IllegalArgumentException("Phone number is invalid. It should be in the format XXX-XXX-XXXX.");
        }
 
-       // Save the new account to the data source
+       // Save the new account to the in-memory data source
        Account account = new Account(name, email, phoneNumber);
-       dataSource.saveAccount(account);
+       accounts.add(account);
+   }
+
+   /**
+    * Retrieves an account with the given email address.
+    *
+    * @param email The email address of the account to retrieve.
+    * @return The account with the given email address, or an empty Optional if no such account exists.
+    */
+   public Optional<Account> getAccount(String email) {
+       return accounts.stream().filter(account -> account.getEmail().equals(email)).findFirst();
    }
 }
 
@@ -46,35 +60,26 @@ class Account {
    }
 
    public String getName() {
-    return name;
-}
+       return name;
+   }
 
-public void setName(String name) {
-    this.name = name;
-}
+   public void setName(String name) {
+       this.name = name;
+   }
 
-public String getEmail() {
-    return email;
-}
+   public String getEmail() {
+       return email;
+   }
 
-public void setEmail(String email) {
-    this.email = email;
-}
+   public void setEmail(String email) {
+       this.email = email;
+   }
 
-public String getPhoneNumber() {
-    return phoneNumber;
-}
+   public String getPhoneNumber() {
+       return phoneNumber;
+   }
 
-public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-}
-}
-
-
-/**
-* The DataSource interface defines methods for saving and retrieving accounts.
-*/
-interface DataSource {
-   void saveAccount(Account account);
-   Account getAccount(String email);
+   public void setPhoneNumber(String phoneNumber) {
+       this.phoneNumber = phoneNumber;
+   }
 }
