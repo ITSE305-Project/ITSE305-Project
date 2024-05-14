@@ -1,4 +1,4 @@
- /**
+/**
  * The CreateAccountPresenter class is responsible for handling user input and displaying output to the user.
  */
 public class CreateAccountPresenter {
@@ -29,7 +29,15 @@ public class CreateAccountPresenter {
         String email = System.console().readLine();
         System.out.print("Phone number:123-456-7890S ");
         String phoneNumber = System.console().readLine();
-
+        if (name == null || name.isEmpty() || email == null || email.isEmpty() || phoneNumber == null || phoneNumber.isEmpty()) {
+            throw new IllegalArgumentException("Name, email, and phone number are required.");
+        }
+        if (!email.contains("@")) {
+            throw new IllegalArgumentException("Email is invalid.");
+        }
+        if (!phoneNumber.matches("\\d{3}-\\d{3}-\\d{4}")) {
+            throw new IllegalArgumentException("Phone number is invalid. It should be in the format XXX-XXX-XXXX.");
+        }
         // Create a new account with the user's personal information
         try {
             createAccountBusiness.createAccount(name, email, phoneNumber);
