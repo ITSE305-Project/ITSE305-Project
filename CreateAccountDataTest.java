@@ -1,33 +1,29 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class CreateAccountDataTest {
+import java.util.Optional;
+
+class CreateAccountDataTest {
+
     @Test
-    public void testCreateAccount() throws Exception {
+    void testCreateAccount() {
         CreateAccountData createAccountData = new CreateAccountData();
+        Assertions.assertDoesNotThrow(() -> createAccountData.createAccount("Tahura Tabassum", "tahura@example.com", "123-456-7890"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> createAccountData.createAccount("", "tahura@example.com", "123-456-7890"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> createAccountData.createAccount("Tahura Tabassum", "", "123-456-7890"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> createAccountData.createAccount("Tahura Tabassum", "tahura@example.com", ""));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> createAccountData.createAccount("", "", ""));
+    }
 
+    @Test
+    void testGetAccount() {
+        CreateAccountData createAccountData = new CreateAccountData();
         createAccountData.createAccount("Tahura Tabassum", "tahura@example.com", "123-456-7890");
-
-        // You could add additional tests here to verify that the account was saved correctly
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateAccountInvalidName() throws Exception {
-        CreateAccountData createAccountData = new CreateAccountData();
-
-        createAccountData.createAccount(null, "tahura@example.com", "123-456-7890");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateAccountInvalidEmail() throws Exception {
-        CreateAccountData createAccountData = new CreateAccountData();
-
-        createAccountData.createAccount("Tahura Tabassum", "tahuraexample.com", "123-456-7890");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateAccountInvalidPhoneNumber() throws Exception {
-        CreateAccountData createAccountData = new CreateAccountData();
-
-        createAccountData.createAccount("Tahura Tabassum", "tahura@example.com", "123-456");
+        Optional<Account> account = createAccountData.getAccount("tahura@example.com");
+        Assertions.assertTrue(account.isPresent());
+        Assertions.assertEquals("Tahura Tabassum", account.get().getName());
+        Assertions.assertEquals("tahura@example.com", account.get().getEmail());
+        Assertions.assertEquals("123-456-7890", account.get().getPhoneNumber());
+        Assertions.assertFalse(createAccountData.getAccount("nonexistent@example.com").isPresent());
     }
 }
