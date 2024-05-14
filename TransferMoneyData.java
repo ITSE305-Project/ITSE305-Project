@@ -1,11 +1,18 @@
 /**
  * A class to manage accounts and their information.
  */
-class Account {
+class TransferAccount {
     private String IBAN;
     private double balance;
 
-    public Account(String IBAN, double balance) {
+    public TransferAccount(String IBAN, double balance) {
+        if (IBAN == null || IBAN.isEmpty()) {
+            throw new IllegalArgumentException("IBAN cannot be null or empty.");
+        }
+        if (balance < 0) {
+            throw new IllegalArgumentException("Balance cannot be negative.");
+        }
+
         this.IBAN = IBAN;
         this.balance = balance;
     }
@@ -27,21 +34,21 @@ class Account {
  * A class to manage account data and operations.
  */
 public class TransferMoneyData {
-    private Account[] accounts;
+    private TransferAccount[] accounts;
 
     public TransferMoneyData() {
-        accounts = new Account[3];
-        accounts[0] = new Account("123123123", 2000.0);
-        accounts[1] = new Account("112233123", 3000.0);
-        accounts[2] = new Account("123456789", 1000.0);
+        accounts = new TransferAccount[3];
+        accounts[0] = new TransferAccount("123123123", 2000.0);
+        accounts[1] = new TransferAccount("112233123", 3000.0);
+        accounts[2] = new TransferAccount("123456789", 1000.0);
     }
 
     public boolean accountExists(String IBAN) {
         return getAccount(IBAN) != null;
     }
 
-    public Account getAccount(String IBAN) {
-        for (Account acc : accounts) {
+    public TransferAccount getAccount(String IBAN) {
+        for (TransferAccount acc : accounts) {
             if (acc.getIBAN().equals(IBAN)) {
                 return acc;
             }

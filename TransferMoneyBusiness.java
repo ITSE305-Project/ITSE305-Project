@@ -10,9 +10,20 @@ class TransferMoneyBusiness {
     }
 
     public void transferFunds(String senderIBAN, String recipientIBAN, double amount, String description) {
+        // Validate input parameters
+        if (senderIBAN == null || senderIBAN.isEmpty() || recipientIBAN == null || recipientIBAN.isEmpty()) {
+            System.out.println("Sender's and recipient's IBAN cannot be empty.");
+            return;
+        }
+
+        if (amount <= 0) {
+            System.out.println("Transfer amount must be positive.");
+            return;
+        }
+
         // Authenticate sender, recipient, and transaction amount
-        Account sender = data.getAccount(senderIBAN);
-        Account recipient = data.getAccount(recipientIBAN);
+        TransferAccount sender = data.getAccount(senderIBAN);
+        TransferAccount recipient = data.getAccount(recipientIBAN);
 
         // Process funds transfer
         if (sender != null && recipient != null && sender.getBalance() >= amount) {

@@ -13,7 +13,7 @@ class TransferMoneyDataTest {
     @Test
     void testGetAccount() {
         TransferMoneyData data = new TransferMoneyData();
-        Account account = data.getAccount("112233123");
+        TransferAccount account = data.getAccount("112233123");
         assertNotNull(account);
         assertEquals("112233123", account.getIBAN());
         assertEquals(3000.0, account.getBalance());
