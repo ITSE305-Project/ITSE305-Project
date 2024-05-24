@@ -2,7 +2,7 @@
  * This class represents the business logic layer of the Funds Transfer System.
  * It contains methods for transferring funds and authenticating transactions.
  */
-class TransferMoneyBusiness {
+public class TransferMoneyBusiness {
     private TransferMoneyData data;
 
     public TransferMoneyBusiness(TransferMoneyData data) {
