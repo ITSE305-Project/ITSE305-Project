@@ -2,8 +2,20 @@
  * The CreateAccountPresenter class is responsible for handling user input and displaying output to the user.
  */
 public class CreateAccountPresenter {
+    
+    public static void main(String[] args) {
+        // Create a CreateAccountBusiness object
+        CreateAccountBusiness createAccountBusiness = new CreateAccountBusiness(null);
+
+        // Create a CreateAccountPresenter object
+        CreateAccountPresenter createAccountPresenter = new CreateAccountPresenter(createAccountBusiness);
+
+        // Call the createAccount method
+        createAccountPresenter.createAccount();
+    }
+    
     // The business layer object
-    private CreateAccountBusiness createAccountBusiness;
+    public CreateAccountBusiness createAccountBusiness;
 
     /**
      * Constructs a CreateAccountPresenter object with a CreateAccountBusiness object.
@@ -23,11 +35,11 @@ public class CreateAccountPresenter {
     public String createAccount() {
         // Prompt the user to enter their personal information
         System.out.println("Enter your personal information:");
-        System.out.print("Name:Tahura Tabassum ");
+        System.out.print("Name: ");
         String name = System.console().readLine();
-        System.out.print("Email: tahura@example.com ");
+        System.out.print("Email: ");
         String email = System.console().readLine();
-        System.out.print("Phone number:123-456-7890S ");
+        System.out.print("Phone number: ");
         String phoneNumber = System.console().readLine();
         if (name == null || name.isEmpty() || email == null || email.isEmpty() || phoneNumber == null || phoneNumber.isEmpty()) {
             throw new IllegalArgumentException("Name, email, and phone number are required.");
@@ -48,4 +60,5 @@ public class CreateAccountPresenter {
         return phoneNumber;
         
     }
+
 }
